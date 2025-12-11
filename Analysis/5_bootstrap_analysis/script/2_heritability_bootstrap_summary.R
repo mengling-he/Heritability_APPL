@@ -83,13 +83,17 @@ df_summary <- h2_results_long %>%
   group_by(metric, n_geno, n_rep) %>%
   summarise(
     mean_h2 = mean(h2, na.rm = TRUE),
-    neg_var_h2  = 1-var(h2,  na.rm = TRUE),
+    'Negtive Variance'  = 1-var(h2,  na.rm = TRUE),
     IQR  = IQR(h2, na.rm = TRUE),# it's not sd, but IQR
     Spread  = quantile(h2, 0.975) - quantile(h2, 0.025),
     .groups = "drop"
   )
 
-plot_surface_z(df_summary,z_value='neg_var_h2',mean_col='mean_h2')
+plot_surface_z(df_summary,z_value='Negtive Variance',mean_col='mean_h2',
+               outdir=outdir,
+               file_name = "H2_surface_plot_var.html"
+               )
+
 plot_surface_z(df_summary,z_value='Spread',mean_col='mean_h2')
 
 

@@ -13,6 +13,7 @@ setwd(dirname(getActiveDocumentContext()$path))
 
 # source the heritability calculation function
 source("../../../Code/heritability_fun.R")
+source("../../../Code/plot_fun.R")
 
 
 # ----read data----
